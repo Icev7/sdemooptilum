@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPTILUM — Oświetlenie jest naszą pasją | Chwaszczyno · Gdańsk</title>
+  <meta name="description" content="OPTILUM Sp. z o.o. — Kompleksowa realizacja projektów oświetleniowych. Projektowanie, doradztwo techniczne i magazyn opraw oświetleniowych przy ul. Rewerenda 17A w Chwaszczynie." />
+
+  <!-- Google Fonts: Plus Jakarta Sans (Swiss Grotesque) & Instrument Serif (Editorial Accent) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       SWISS ARCHITECTURAL DESIGN TOKENS (LIGHT DEFAULT / MATTE CHARCOAL DARK)
+       ========================================================================== */
+    :root {
+      --bg-primary: #F6F5F0;
+      --bg-surface: #FFFFFF;
+      --bg-stone: #ECEAE2;
+      --text-primary: #111111;
+      --text-secondary: #5A5955;
+      --text-muted: #85837D;
+      --border-hairline: #DCDAD2;
+      --border-strong: #111111;
+      --accent-terracotta: #B84A27;
+    }
+
+    html.dark {
+      --bg-primary: #0F0F0E;
+      --bg-surface: #171715;
+      --bg-stone: #1F1F1C;
+      --text-primary: #F2F0EA;
+      --text-secondary: #94928B;
+      --text-muted: #66645E;
+      --border-hairline: #282825;
+      --border-strong: #F2F0EA;
+      --accent-terracotta: #D4633F;
+    }
+
+    * {
+      border-radius: 0px !important;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      overflow-x: hidden;
+    }
+
+    /* Architectural Token Utilities */
+    .bg-paper { background-color: var(--bg-primary); }
+    .bg-surface { background-color: var(--bg-surface); }
+    .bg-stone { background-color: var(--bg-stone); }
+    .text-ink { color: var(--text-primary); }
+    .text-graphite { color: var(--text-secondary); }
+    .text-muted-arch { color: var(--text-muted); }
+    .text-terracotta { color: var(--accent-terracotta); }
+    .border-hairline { border-color: var(--border-hairline); }
+    .border-ink { border-color: var(--border-strong); }
+
+    /* Editorial Typography Rules */
+    .heading-editorial {
+      letter-spacing: -0.03em;
+      line-height: 1.06;
+    }
+
+    .serif-accent {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    /* Navigation Link Underline Indicator */
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+    .nav-link.active {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background-color: var(--accent-terracotta);
+    }
+
+    /* Filter Tab Indicator */
+    .filter-tab {
+      position: relative;
+      padding-bottom: 10px;
+      color: var(--text-secondary);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .filter-tab:hover {
+      color: var(--text-primary);
+    }
+    .filter-tab.active {
+      color: var(--text-primary);
+      font-weight: 600;
+      border-bottom-color: var(--accent-terracotta);
+    }
+
+    /* Architectural Photography Hover Treatment */
+    .arch-photo-wrap {
+      overflow: hidden;
+      background-color: var(--bg-stone);
+    }
+    .arch-photo {
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .group:hover .arch-photo {
+      transform: scale(1.035);
+    }
+
+    /* Subtle Page View Transition */
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .view-transition {
+      animation: fadeSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Form Bottom-Border Inputs */
+    .arch-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-hairline);
+      color: var(--text-primary);
+      padding: 12px 0;
+      width: 100%;
+      font-size: 0.9375rem;
+      transition: border-color 0.2s ease;
+    }
+    .arch-input:focus {
+      outline: none;
+      border-bottom-color: var(--text-primary);
+    }
+    .arch-input::placeholder {
+      color: var(--text-muted);
+    }
+    select.arch-input option {
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ========================================================================
+       STICKY ARCHITECTURAL HEADER
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-paper/95 backdrop-blur-sm border-b border-hairline">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Left: Crisp Typographic Brand Mark -->
+      <a href="#/home" class="group flex flex-col focus:outline-none" aria-label="OPTILUM Strona główna">
+        <div class="flex items-center gap-2">
+          <span class="font-bold tracking-[0.22em] text-lg sm:text-xl text-ink">OPTILUM</span>
+          <span class="w-1.5 h-1.5 bg-[#B84A27] inline-block"></span>
+        </div>
+        <span id="brand-location-sub" class="text-[10px] tracking-[0.18em] uppercase text-muted-arch mt-0.5">
+          CHWASZCZYNO / GDAŃSK
+        </span>
+      </a>
+
+      <!-- Center: 5 Subpage Navigation Links -->
+      <nav id="desktop-navbar" class="hidden lg:flex items-center space-x-9 text-sm" aria-label="Główna nawigacja">
+        <!-- Populated dynamically -->
+      </nav>
+
+      <!-- Right: Language Switcher (PL / EN) & Minimalist Theme Switcher (Jasny / Ciemny) -->
+      <div class="flex items-center space-x-6">
+        
+        <!-- Language Switcher -->
+        <div class="flex items-center space-x-2 text-xs tracking-widest uppercase" role="group" aria-label="Język">
+          <button type="button" onclick="setLanguage('pl')" id="btn-lang-pl" class="py-1 transition-colors">PL</button>
+          <span class="text-muted-arch">/</span>
+          <button type="button" onclick="setLanguage('en')" id="btn-lang-en" class="py-1 transition-colors">EN</button>
+        </div>
+
+        <span class="h-4 w-[1px] bg-[var(--border-hairline)]"></span>
+
+        <!-- Minimalist Theme Switcher -->
+        <button 
+          type="button" 
+          onclick="toggleTheme()" 
+          class="flex items-center gap-2 text-xs tracking-wider uppercase text-graphite hover:text-ink transition-colors py-1"
+          aria-label="Zmień motyw"
+        >
+          <!-- Hairline Sun Icon -->
+          <svg id="icon-sun" class="w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/>
+          </svg>
+          <!-- Hairline Moon Icon -->
+          <svg id="icon-moon" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+          <span id="theme-switch-label" class="hidden sm:inline">Ciemny</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button 
+          type="button" 
+          onclick="toggleMobileDrawer()" 
+          class="lg:hidden p-2 -mr-2 text-ink focus:outline-none"
+          aria-label="Menu"
+        >
+          <svg id="icon-menu-open" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 7h18M3 12h18M3 17h18"/>
+          </svg>
+          <svg id="icon-menu-close" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="lg:hidden hidden border-t border-hairline bg-surface">
+      <div id="mobile-navbar" class="max-w-[1400px] mx-auto px-5 py-6 flex flex-col space-y-4">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN ROUTER OUTLET (TRUE MULTI-PAGE VIEW CONTAINER)
+       ======================================================================== -->
+  <main id="router-view" class="flex-grow">
+    <!-- Active subpage injected here by router -->
+  </main>
+
+  <!-- ========================================================================
+       ARCHITECTURAL FOOTER
+       ======================================================================== -->
+  <footer class="border-t border-hairline bg-surface mt-auto">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+      
+      <!-- Upper Footer Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 border-b border-hairline">
+        
+        <!-- Column 1: Brand & Statement (4 cols) -->
+        <div class="md:col-span-4 py-12 md:pr-10 md:border-r border-hairline flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="font-bold tracking-[0.22em] text-lg text-ink">OPTILUM</span>
+              <span class="w-1.5 h-1.5 bg-[#B84A27] inline-block"></span>
+            </div>
+            <p id="footer-lead" class="text-sm text-graphite leading-relaxed max-w-xs">
+              Oświetlenie jest naszą pasją. Kompleksowa realizacja projektów oświetleniowych: projektowanie, doradztwo techniczne i własny magazyn.
+            </p>
+          </div>
+          <div class="text-xs text-muted-arch tracking-wider uppercase">
+            OPTILUM SP. Z O.O. · CHWASZCZYNO
+          </div>
+        </div>
+
+        <!-- Column 2: Subpages Navigation (3 cols) -->
+        <div class="md:col-span-3 py-12 md:px-10 border-t md:border-t-0 md:border-r border-hairline space-y-4">
+          <div id="footer-nav-title" class="text-xs tracking-widest uppercase text-muted-arch">
+            Podstrony
+          </div>
+          <ul id="footer-nav-links" class="space-y-2.5 text-sm">
+            <!-- Populated dynamically -->
+          </ul>
+        </div>
+
+        <!-- Column 3: Headquarters, Contact & Legal Registry (5 cols) -->
+        <div class="md:col-span-5 py-12 md:pl-10 border-t md:border-t-0 border-hairline flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div id="footer-hq-title" class="text-xs tracking-widest uppercase text-muted-arch">
+              Siedziba, Magazyn i Dane Rejestrowe
+            </div>
+            <div class="text-sm text-ink font-medium">
+              OPTILUM Spółka z ograniczoną odpowiedzialnością
+            </div>
+            <div class="text-sm text-graphite space-y-1">
+              <p>ul. Rewerenda 17A, 80-209 Chwaszczyno</p>
+              <p>
+                Tel.: <a href="tel:+48666899244" class="text-ink underline underline-offset-4 hover:text-terracotta transition-colors">+48 666 899 244</a>
+                <span class="mx-2 text-muted-arch">·</span>
+                E-mail: <a href="mailto:biuro@optilum.pl" class="text-ink underline underline-offset-4 hover:text-terracotta transition-colors">biuro@optilum.pl</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-hairline text-xs text-graphite space-y-1">
+            <p>NIP: <span class="text-ink font-medium">584-275-96-62</span> (5842759662) &nbsp;|&nbsp; KRS: <span class="text-ink font-medium">0001034224</span> &nbsp;|&nbsp; <span id="footer-capital">Kapitał zakładowy: 30.000 zł</span></p>
+            <p id="footer-court" class="text-muted-arch">Sąd Rejonowy Gdańsk-Północ w Gdańsku, VIII Wydział Gospodarczy</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Lower Footer Bar -->
+      <div class="py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-muted-arch">
+        <div id="footer-copy">© 2026 OPTILUM Sp. z o.o. Wszelkie prawa zastrzeżone.</div>
+        <div class="flex items-center space-x-6">
+          <a 
+            href="https://www.linkedin.com/company/optilum" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="text-graphite hover:text-ink underline underline-offset-4 transition-colors"
+          >
+            LinkedIn ↗
+          </a>
+          <button 
+            type="button" 
+            onclick="copyCompanyDetails()" 
+            id="footer-copy-btn"
+            class="text-graphite hover:text-ink underline underline-offset-4 transition-colors"
+          >
+            Kopiuj dane rejestrowe
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       LIGHTBOX MODAL FOR REALIZATIONS & JOURNAL ARTICLES
+       ======================================================================== -->
+  <div 
+    id="modal-backdrop" 
+    class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-[2px] flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+    onclick="handleBackdropClick(event)"
+  >
+    <div id="modal-box" class="w-full max-w-4xl bg-surface border border-hairline my-8 overflow-hidden">
+      <!-- Dynamic Modal Content -->
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MINIMALIST NOTIFICATION BAR (CLIPBOARD / FORM CONFIRMATION)
+       ======================================================================== -->
+  <div id="toast-notice" class="fixed bottom-16 right-6 z-50 hidden bg-ink text-paper px-5 py-3.5 text-xs tracking-wider uppercase border border-hairline">
+    <span id="toast-notice-text">Skopiowano do schowka</span>
+  </div>
+
+  <!-- ========================================================================
+       COOKIE NOTICE (AUTHENTIC OPTILUM.PL TEXT)
+       ======================================================================== -->
+  <div id="cookie-bar" class="fixed bottom-0 inset-x-0 z-40 bg-surface border-t border-hairline">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <p id="cookie-text" class="text-xs text-graphite leading-relaxed">
+        Ta strona korzysta z ciasteczek aby świadczyć usługi na najwyższym poziomie. Dalsze korzystanie ze strony oznacza, że zgadzasz się na ich użycie.
+      </p>
+      <button 
+        type="button" 
+        onclick="dismissCookieBar()" 
+        id="cookie-btn"
+        class="shrink-0 px-5 py-2 bg-[#111111] dark:bg-[#F2F0EA] text-[#F6F5F0] dark:text-[#111111] text-xs font-medium tracking-wider uppercase hover:opacity-85 transition-opacity"
+      >
+        Zgoda
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       APPLICATION DATA, BILINGUAL DICTIONARY & MULTI-PAGE ROUTER
+       ======================================================================== -->
+  <script>
+    const STATE = {
+      lang: 'pl',           // 'pl' | 'en'
+      theme: 'light',       // 'light' (Default Warm Paper #F6F5F0) | 'dark' (Matte Charcoal #0F0F0E)
+      route: 'home',        // 'home' | 'realizacje' | 'pracownicy' | 'aktualnosci' | 'kontakt'
+      portfolioFilter: 'all',
+      teamFilter: 'all',
+      contactRecipient: '',
+      contactDepartment: 'Dział handlowy',
+      contactSubject: ''
+    };
+
+    const NAV_ROUTES = [
+      { id: 'home', labelPl: 'Strona główna', labelEn: 'Home' },
+      { id: 'realizacje', labelPl: 'Realizacje', labelEn: 'Projects' },
+      { id: 'pracownicy', labelPl: 'Pracownicy', labelEn: 'Team' },
+      { id: 'aktualnosci', labelPl: 'Aktualności', labelEn: 'News' },
+      { id: 'kontakt', labelPl: 'Kontakt', labelEn: 'Contact' }
+    ];
+
+    // All 9 Authentic Realization Categories & Locations from https://optilum.pl/realizacje/
+    const REALIZATIONS = [
+      {
+        index: '01',
+        id: 'terminal-kontenerowy',
+        group: 'industrial',
+        categoryPl: 'Przemysł',
+        categoryEn: 'Industry',
+        titlePl: 'Terminal Kontenerowy',
+        titleEn: 'Container Terminal',
+        locationPl: 'Infrastruktura portowa · Pomorze',
+        locationEn: 'Port Infrastructure · Pomerania',
+        image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Oświetlenie masztowe i przemysłowe dla infrastruktury portowo-przeładunkowej o wysokiej odporności środowiskowej.',
+        descEn: 'High-mast and industrial lighting for maritime port and intermodal loading infrastructure with high environmental resistance.',
+        detailsPl: 'Kompleksowy dobór i dostawa projektorów masztowych dużej mocy przystosowanych do pracy w warunkach nadmorskich. Precyzyjna optyka asymetryczna zapewnia wysoką równomierność natężenia oświetlenia na placach składowych i drogach manewrowych przy jednoczesnej eliminacji olśnienia operatorów suwnic.',
+        detailsEn: 'Comprehensive specification and delivery of high-output mast floodlights engineered for coastal environments. Asymmetric optical systems ensure high uniformity across container yards and maneuvering lanes while eliminating glare for crane operators.',
+        scopePl: 'Projekt fotometryczny, dobór opraw o podwyższonej odporności korozyjnej, dostawa na inwestycję.',
+        scopeEn: 'Photometric design, marine-grade luminaire specification, direct site delivery.'
+      },
+      {
+        index: '02',
+        id: 'iluminacje-kwidzyn',
+        group: 'outdoor',
+        categoryPl: 'Iluminacje',
+        categoryEn: 'Illuminations',
+        titlePl: 'Kwidzyn',
+        titleEn: 'Kwidzyn',
+        locationPl: 'Architektura historyczna · Kwidzyn',
+        locationEn: 'Historic Architecture · Kwidzyn',
+        image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Iluminacja architektoniczna podkreślająca detale elewacji i bryłę obiektu nocą.',
+        descEn: 'Architectural illumination accentuating facade details and monumental brick volume at night.',
+        detailsPl: 'Koncepcja iluminacji oparta na oprawach liniowych oraz projektorach o wąskim rozsyle światła, które wydobywają fakturę ceglanych murów i rytm detali architektonicznych bez powodowania zanieczyszczenia światłem nocnego nieba.',
+        detailsEn: 'Illumination concept utilizing linear grazing luminaires and narrow-beam spotlights to bring out the historic brick texture and architectural rhythm without causing upward light pollution.',
+        scopePl: 'Dobór optyki kierunkowej, symulacja wizualna iluminacji, dostawa opraw zewnętrznych IP67.',
+        scopeEn: 'Directional optics selection, visual illumination simulation, supply of IP67 exterior luminaires.'
+      },
+      {
+        index: '03',
+        id: 'wnetrza-food-hall',
+        group: 'commercial',
+        categoryPl: 'Wnętrza',
+        categoryEn: 'Interiors',
+        titlePl: 'Food hall',
+        titleEn: 'Food hall',
+        locationPl: 'Przestrzeń gastronomiczna · Trójmiasto',
+        locationEn: 'Hospitality & Dining Space · Tricity',
+        image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Oświetlenie stref gastronomicznych i wspólnych łączące komfort wizualny z klimatem wnętrza.',
+        descEn: 'Lighting for culinary and communal dining zones combining visual comfort with warm interior atmosphere.',
+        detailsPl: 'Wielowarstwowy system oświetlenia wnętrzowego łączący szynoprzewody z reflektorami akcentującymi o wysokim współczynniku oddawania barw (CRI >90) w strefie stolików oraz funkcjonalne oświetlenie techniczne w strefach przygotowywania posiłków.',
+        detailsEn: 'Multi-layered interior lighting combining track-mounted accent spotlights with high color rendering (CRI >90) across dining areas and functional task lighting within culinary preparation bays.',
+        scopePl: 'Projekt oświetlenia strefowego, doradztwo w zakresie temperatury barwowej, kompletacja dostaw.',
+        scopeEn: 'Zoned lighting design, color temperature advisory, complete luminaire supply.'
+      },
+      {
+        index: '04',
+        id: 'hale-produkcyjne-etak',
+        group: 'industrial',
+        categoryPl: 'Hale produkcyjne',
+        categoryEn: 'Production Halls',
+        titlePl: 'Etak',
+        titleEn: 'Etak',
+        locationPl: 'Zakład produkcyjny · Pomorze',
+        locationEn: 'Manufacturing Plant · Pomerania',
+        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Systemy oświetlenia przemysłowego LED dla ciągów technologicznych i stanowisk pracy.',
+        descEn: 'Industrial LED lighting systems engineered for technological lines and precision workstations.',
+        detailsPl: 'Realizacja obejmująca dobór i dostawę przemysłowych opraw LED dla hali produkcyjnej Etak. System gwarantuje normatywne natężenie oświetlenia na płaszczyźnie roboczej, wysoki komfort wzrokowy operatorów maszyn oraz znaczną redukcję zużycia energii elektrycznej.',
+        detailsEn: 'Project encompassing specification and delivery of industrial LED luminaires for the Etak manufacturing plant. The system guarantees normative workstation illuminance, low glare for machine operators, and substantial energy savings.',
+        scopePl: 'Obliczenia fotometryczne zgodne z PN-EN 12464-1, optymalizacja kosztowa, dostawa z magazynu.',
+        scopeEn: 'EN 12464-1 photometric calculations, investment optimization, warehouse supply.'
+      },
+      {
+        index: '05',
+        id: 'hale-magazynowe-gdansk',
+        group: 'industrial',
+        categoryPl: 'Hale magazynowe',
+        categoryEn: 'Warehouse Halls',
+        titlePl: 'Gdańsk',
+        titleEn: 'Gdańsk',
+        locationPl: 'Centrum logistyczne · Gdańsk',
+        locationEn: 'Logistics Center · Gdańsk',
+        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Oświetlenie wysokiego składowania z optyką dopasowaną do wąskich alejek regałowych.',
+        descEn: 'High-bay warehouse lighting with specialized optics tailored for narrow racking aisles.',
+        detailsPl: 'Zastosowanie opraw przemysłowych z dedykowaną optyką korytarzową pozwoliło na równomierne doświetlenie pionowych powierzchni regałów wysokiego składowania oraz stref kompletacji i doków przeładunkowych w gdańskim obiekcie logistycznym.',
+        detailsEn: 'Industrial high-bay luminaires equipped with dedicated aisle optics deliver uniform vertical illumination across high-storage racks, picking zones, and loading docks at a logistics facility in Gdańsk.',
+        scopePl: 'Projekt rozmieszczenia opraw w alejkach, dobór automatyki obecności, dostawa inwestycyjna.',
+        scopeEn: 'Aisle layout engineering, occupancy control specification, project delivery.'
+      },
+      {
+        index: '06',
+        id: 'oswietlenie-drogowe',
+        group: 'outdoor',
+        categoryPl: 'Oświetlenie drogowe',
+        categoryEn: 'Roadway Lighting',
+        titlePl: 'Infrastruktura drogowa',
+        titleEn: 'Roadway Infrastructure',
+        locationPl: 'Drogi publiczne i wewnętrzne · Pomorze',
+        locationEn: 'Public & Internal Roads · Pomerania',
+        image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Oprawy uliczne i drogowe zapewniające równomierność luminancji i bezpieczeństwo ruchu.',
+        descEn: 'Street and roadway luminaires ensuring road surface luminance uniformity and traffic safety.',
+        detailsPl: 'Projekty i dostawy nowoczesnych opraw drogowych LED spełniających wymagania normy PN-EN 13201 dla dróg gminnych, powiatowych, węzłów komunikacyjnych oraz dróg manewrowych wokół obiektów przemysłowych.',
+        detailsEn: 'Engineering and supply of modern LED street luminaires meeting EN 13201 standards for municipal roads, intersections, pedestrian crossings, and industrial access roads.',
+        scopePl: 'Obliczenia klas oświetleniowych M/C/P, dobór soczewek drogowych, dostawa z magazynu w Chwaszczynie.',
+        scopeEn: 'M/C/P road lighting class calculations, street optics selection, supply from Chwaszczyno warehouse.'
+      },
+      {
+        index: '07',
+        id: 'oswietlenie-parkowe-sopot',
+        group: 'outdoor',
+        categoryPl: 'Oświetlenie parkowe',
+        categoryEn: 'Park Lighting',
+        titlePl: 'Sopot',
+        titleEn: 'Sopot',
+        locationPl: 'Przestrzeń publiczna · Sopot',
+        locationEn: 'Public Realm & Parkland · Sopot',
+        image: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Oświetlenie ciągów pieszych i terenów zielonych o podwyższonej estetyce opraw.',
+        descEn: 'Pedestrian pathway and green space lighting featuring refined architectural luminaire forms.',
+        detailsPl: 'W nadmorskiej przestrzeni Sopotu zastosowano oprawy parkowe łączące szlachetną formę architektoniczną z odpornością na warunki atmosferyczne i kontrolą emisji światła w górną półprzestrzeń, budując przyjazny klimat wieczornych spacerów.',
+        detailsEn: 'In the coastal setting of Sopot, park luminaires combine refined architectural aesthetics with corrosion resistance and zero upward light emission, creating a serene evening atmosphere along pedestrian promenades.',
+        scopePl: 'Dobór opraw parkowych i słupów, konsultacje architektoniczne, dostawa na inwestycję.',
+        scopeEn: 'Park luminaire and column selection, architectural advisory, site delivery.'
+      },
+      {
+        index: '08',
+        id: 'salony-samochodowe-gdynia',
+        group: 'commercial',
+        categoryPl: 'Salony samochodowe',
+        categoryEn: 'Automotive Showrooms',
+        titlePl: 'Gdynia',
+        titleEn: 'Gdynia',
+        locationPl: 'Ekspozycja i serwis · Gdynia',
+        locationEn: 'Showroom & Service · Gdynia',
+        image: 'https://images.unsplash.com/photo-1562141989-c5c79ac8f576?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Systemy ekspozycyjne o wysokim współczynniku oddawania barw podkreślające linie nadwozia i lakier.',
+        descEn: 'High-CRI display lighting systems emphasizing vehicle bodywork lines and paint finishes.',
+        detailsPl: 'Kompleksowe oświetlenie salonu samochodowego w Gdyni obejmujące reprezentacyjną strefę ekspozycji pojazdów, biura obsługi klienta oraz halę serwisowo-diagnostyczną wymagającą wysokiego natężenia i ograniczonego olśnienia.',
+        detailsEn: 'Comprehensive lighting solution for an automotive dealership in Gdynia covering the main vehicle showroom floor, client consultation lounges, and technical service bays.',
+        scopePl: 'Projekt oświetlenia ekspozycyjnego i serwisowego, wsparcie techniczne, dostawa opraw.',
+        scopeEn: 'Showroom and service bay lighting design, technical advisory, luminaire supply.'
+      },
+      {
+        index: '09',
+        id: 'medyczne-gdansk',
+        group: 'medical',
+        categoryPl: 'Medyczne',
+        categoryEn: 'Medical Facilities',
+        titlePl: 'Gdańsk',
+        titleEn: 'Gdańsk',
+        locationPl: 'Ochrona zdrowia · Gdańsk',
+        locationEn: 'Healthcare Facility · Gdańsk',
+        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=85',
+        descPl: 'Specjalistyczne oprawy o podwyższonej szczelności i niskim olśnieniu dla gabinetów i placówek medycznych.',
+        descEn: 'Specialized low-glare, hygienic luminaires designed for clinical examination rooms and healthcare facilities.',
+        detailsPl: 'Dostawa i dobór specjalistycznych opraw oświetleniowych dla obiektu medycznego w Gdańsku. Zastosowane rozwiązania spełniają rygorystyczne normy higieniczne, gwarantują niski współczynnik olśnienia UGR < 19 oraz wierne oddawanie barw niezbędne w diagnostyce.',
+        detailsEn: 'Specification and supply of specialized medical luminaires in Gdańsk. The installed systems meet strict clinical hygiene standards, low glare requirements (UGR < 19), and high color rendering accuracy essential for diagnostics.',
+        scopePl: 'Dobór opraw z atestem higienicznym, obliczenia natężenia oświetlenia, dostawa.',
+        scopeEn: 'Hygienic-certified luminaire selection, photometric calculations, supply.'
+      }
+    ];
+
+    // All 9 Authentic Employees from https://optilum.pl/pracownicy/
+    const EMPLOYEES = [
+      {
+        index: '01',
+        name: 'Maciej Góralski',
+        deptKey: 'sales',
+        deptPl: 'Dział handlowy',
+        deptEn: 'Sales Department',
+        rolePl: 'Doradztwo techniczno-handlowe i obsługa inwestycji',
+        roleEn: 'Technical Sales Advisor · Project Investments',
+        phone: '696-475-700',
+        phoneHref: '+48696475700',
+        email: 'maciej.goralski@optilum.pl'
+      },
+      {
+        index: '02',
+        name: 'Piotr Alama',
+        deptKey: 'sales',
+        deptPl: 'Dział handlowy',
+        deptEn: 'Sales Department',
+        rolePl: 'Doradztwo techniczno-handlowe i optymalizacja ofert',
+        roleEn: 'Technical Sales Advisor · Offer Optimization',
+        phone: '696-656-574',
+        phoneHref: '+48696656574',
+        email: 'piotr.alama@optilum.pl'
+      },
+      {
+        index: '03',
+        name: 'Daniel Klebba',
+        deptKey: 'sales',
+        deptPl: 'Dział handlowy',
+        deptEn: 'Sales Department',
+        rolePl: 'Doradztwo techniczno-handlowe i systemy oświetleniowe',
+        roleEn: 'Technical Sales Advisor · Lighting Systems',
+        phone: '696-656-644',
+        phoneHref: '+48696656644',
+        email: 'daniel.klebba@optilum.pl'
+      },
+      {
+        index: '04',
+        name: 'Mirosław Keller',
+        deptKey: 'sales',
+        deptPl: 'Dział handlowy',
+        deptEn: 'Sales Department',
+        rolePl: 'Doradztwo techniczno-handlowe i obsługa inwestycji',
+        roleEn: 'Technical Sales Advisor · Project Sales',
+        phone: '692-865-483',
+        phoneHref: '+48692865483',
+        email: 'miroslaw.keller@optilum.pl'
+      },
+      {
+        index: '05',
+        name: 'Szymon Menczykowski',
+        deptKey: 'sales',
+        deptPl: 'Dział handlowy',
+        deptEn: 'Sales Department',
+        rolePl: 'Doradztwo techniczno-handlowe i oświetlenie obiektowe',
+        roleEn: 'Technical Sales Advisor · Architectural & Commercial',
+        phone: '696-431-500',
+        phoneHref: '+48696431500',
+        email: 'szymon.menczykowski@optilum.pl'
+      },
+      {
+        index: '06',
+        name: 'Dawid Zaleski',
+        deptKey: 'design',
+        deptPl: 'Dział projektowy',
+        deptEn: 'Design Department',
+        rolePl: 'Projektant oświetlenia · Obliczenia fotometryczne i dobór opraw',
+        roleEn: 'Lighting Designer · Photometric Calculations & Specification',
+        phone: '696-999-792',
+        phoneHref: '+48696999792',
+        email: 'dawid.zaleski@optilum.pl'
+      },
+      {
+        index: '07',
+        name: 'Anna Chojnowska',
+        deptKey: 'design',
+        deptPl: 'Dział projektowy',
+        deptEn: 'Design Department',
+        rolePl: 'Projektantka oświetlenia · Projekty wnętrzowe i architektoniczne',
+        roleEn: 'Lighting Designer · Interior & Architectural Lighting Projects',
+        phone: '666-350-163',
+        phoneHref: '+48666350163',
+        email: 'anna.chojnowska@optilum.pl'
+      },
+      {
+        index: '08',
+        name: 'Andrzej Kłudziak',
+        deptKey: 'warehouse',
+        deptPl: 'Magazyn',
+        deptEn: 'Warehouse',
+        rolePl: 'Gospodarka magazynowa i koordynacja wydań · Chwaszczyno',
+        roleEn: 'Warehouse Operations & Dispatch Coordinator · Chwaszczyno',
+        phone: '696-476-200',
+        phoneHref: '+48696476200',
+        email: 'andrzej.kludziak@optilum.pl'
+      },
+      {
+        index: '09',
+        name: 'Agnieszka Staśkowiak',
+        deptKey: 'admin',
+        deptPl: 'Administracja',
+        deptEn: 'Administration',
+        rolePl: 'Administracja biura i obsługa rozliczeń',
+        roleEn: 'Office Administration & Billing Specialist',
+        phone: '696-431-400',
+        phoneHref: '+48696431400',
+        email: 'agnieszka.staskowiak@optilum.pl'
+      }
+    ];
+
+    // Authentic Announcements from https://optilum.pl/aktualnosci/
+    const JOURNAL_ITEMS = [
+      {
+        index: '01',
+        id: 'zmiana-siedziby-firmy',
+        categoryPl: 'Komunikat organizacyjny',
+        categoryEn: 'Company Announcement',
+        titlePl: 'Zmiana siedziby firmy',
+        titleEn: 'Company Headquarters Relocation',
+        leadPl: 'Nowa lokalizacja magazynu i biur OPTILUM. ul. Rewerenda 17A, 80-209 Chwaszczyno.',
+        leadEn: 'New location of OPTILUM warehouse and offices: ul. Rewerenda 17A, 80-209 Chwaszczyno.',
+        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=85',
+        bodyPl: [
+          'Informujemy wszystkich Inwestorów, Architektów, Projektantów branży elektrycznej oraz Partnerów Handlowych, że siedziba główna, biura handlowo-projektowe oraz magazyn firmy OPTILUM Sp. z o.o. mieszczą się w nowej lokalizacji przy ul. Rewerenda 17A, 80-209 Chwaszczyno.',
+          'Położenie w Chwaszczynie — na bezpośrednim styku Gdańska, Gdyni i Sopotu, w sąsiedztwie głównych tras komunikacyjnych Trójmiasta — zapewnia dogodny dojazd zarówno dla klientów odbierających oprawy osobiście z naszego magazynu, jak i dla spedycji obsługującej inwestycje na terenie całej Polski.',
+          'Połączenie nowoczesnej przestrzeni biurowej Działu Projektowego i Działu Handlowego z powiększonym zapleczem magazynowym pozwala nam jeszcze sprawniej realizować kompleksowe dostawy oświetlenia. Zapraszamy do odwiedzin oraz bezpośrednich konsultacji technicznych.'
+        ],
+        bodyEn: [
+          'We kindly inform all Investors, Architects, Electrical Engineers, and Commercial Partners that the headquarters, design and sales offices, and central warehouse of OPTILUM Sp. z o.o. are now located at ul. Rewerenda 17A, 80-209 Chwaszczyno.',
+          'Our location in Chwaszczyno — directly connecting Gdańsk, Gdynia, and Sopot right off the Tricity bypass — ensures convenient access both for contractors picking up luminaires directly from our warehouse and for freight carriers serving construction sites across Poland.',
+          'Integrating our Lighting Design and Sales offices with an expanded warehouse facility allows us to deliver comprehensive lighting projects with even shorter lead times. We welcome you to visit our office for technical consultations.'
+        ]
+      },
+      {
+        index: '02',
+        id: 'wspieramy-potrzebujacych',
+        categoryPl: 'Odpowiedzialność społeczna',
+        categoryEn: 'Social Responsibility',
+        titlePl: 'Wspieramy potrzebujących',
+        titleEn: 'Supporting Those in Need',
+        leadPl: 'Zaangażowanie zespołu OPTILUM Sp. z o.o. w inicjatywy społeczne i pomoc potrzebującym.',
+        leadEn: 'OPTILUM Sp. z o.o. team commitment to community initiatives and charitable support.',
+        image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85',
+        bodyPl: [
+          'W codziennej pracy skupiamy się na inżynierii światła i rzetelnej obsłudze inwestycji, jednak równie ważna jest dla nas wrażliwość na potrzeby otoczenia. Jako zespół OPTILUM Sp. z o.o. aktywnie włączamy się w działania charytatywne i wspieramy potrzebujących.',
+          'Wierzymy, że odpowiedzialne prowadzenie firmy polega na dzieleniu się wypracowanym dobrem oraz realnym wsparciu inicjatyw pomocowych. Dziękujemy naszym pracownikom i partnerom za wspólne zaangażowanie w niesienie pomocy.'
+        ],
+        bodyEn: [
+          'While our daily work focuses on lighting engineering and reliable project delivery, sensitivity to the needs of our community remains equally important to us. As the OPTILUM Sp. z o.o. team, we actively participate in charitable initiatives and support those in need.',
+          'We believe that responsible business stewardship involves sharing our success and providing tangible support to relief efforts. We thank our employees and partners for their shared commitment.'
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // CORE HELPERS: LANGUAGE, THEME, CLIPBOARD, ROUTER
+    // =========================================================================
+    function t(pl, en) {
+      return STATE.lang === 'pl' ? pl : en;
+    }
+
+    function setLanguage(lang) {
+      STATE.lang = lang;
+      document.documentElement.lang = lang;
+      updateGlobalChrome();
+      renderActiveRoute();
+    }
+
+    function toggleTheme() {
+      STATE.theme = STATE.theme === 'light' ? 'dark' : 'light';
+      const root = document.documentElement;
+      if (STATE.theme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      updateGlobalChrome();
+    }
+
+    function updateGlobalChrome() {
+      // Language active indicators
+      const btnPl = document.getElementById('btn-lang-pl');
+      const btnEn = document.getElementById('btn-lang-en');
+      if (STATE.lang === 'pl') {
+        btnPl.className = 'py-1 font-semibold text-ink border-b border-[#B84A27]';
+        btnEn.className = 'py-1 text-muted-arch hover:text-ink transition-colors';
+      } else {
+        btnEn.className = 'py-1 font-semibold text-ink border-b border-[#B84A27]';
+        btnPl.className = 'py-1 text-muted-arch hover:text-ink transition-colors';
+      }
+
+      // Theme Switcher Icon & Text
+      const iconSun = document.getElementById('icon-sun');
+      const iconMoon = document.getElementById('icon-moon');
+      const themeLabel = document.getElementById('theme-switch-label');
+      if (STATE.theme === 'dark') {
+        iconSun.classList.remove('hidden');
+        iconMoon.classList.add('hidden');
+        themeLabel.textContent = t('Jasny', 'Light');
+      } else {
+        iconSun.classList.add('hidden');
+        iconMoon.classList.remove('hidden');
+        themeLabel.textContent = t('Ciemny', 'Dark');
+      }
+
+      // Render Desktop Navbar
+      const desktopNav = document.getElementById('desktop-navbar');
+      desktopNav.innerHTML = NAV_ROUTES.map(item => {
+        const isActive = STATE.route === item.id;
+        return `
+          <a href="#/${item.id}" class="nav-link ${isActive ? 'active' : ''}">
+            ${t(item.labelPl, item.labelEn)}
+          </a>
+        `;
+      }).join('');
+
+      // Render Mobile Navbar
+      const mobileNav = document.getElementById('mobile-navbar');
+      mobileNav.innerHTML = NAV_ROUTES.map(item => {
+        const isActive = STATE.route === item.id;
+        return `
+          <a 
+            href="#/${item.id}" 
+            onclick="closeMobileDrawer()"
+            class="py-2 border-b border-hairline flex items-center justify-between text-base ${isActive ? 'font-semibold text-ink' : 'text-graphite'}"
+          >
+            <span>${t(item.labelPl, item.labelEn)}</span>
+            <span class="text-xs text-terracotta">${isActive ? '●' : '→'}</span>
+          </a>
+        `;
+      }).join('');
+
+      // Render Footer Navigation & Translations
+      document.getElementById('footer-lead').textContent = t(
+        'Oświetlenie jest naszą pasją. Kompleksowa realizacja projektów oświetleniowych: projektowanie, doradztwo techniczne i własny magazyn.',
+        'Lighting is our passion. Comprehensive realization of lighting projects: photometric design, technical advisory, and our own warehouse.'
+      );
+      document.getElementById('footer-nav-title').textContent = t('Nawigacja', 'Navigation');
+      document.getElementById('footer-hq-title').textContent = t('Siedziba, Magazyn i Dane Rejestrowe', 'Headquarters, Warehouse & Legal Registry');
+      document.getElementById('footer-capital').textContent = t('Kapitał zakładowy: 30.000 zł', 'Share capital: 30,000 PLN');
+      document.getElementById('footer-court').textContent = t(
+        'Sąd Rejonowy Gdańsk-Północ w Gdańsku, VIII Wydział Gospodarczy',
+        'District Court Gdańsk-Północ in Gdańsk, 8th Commercial Division'
+      );
+      document.getElementById('footer-copy').textContent = t(
+        '© 2026 OPTILUM Sp. z o.o. Wszelkie prawa zastrzeżone.',
+        '© 2026 OPTILUM Sp. z o.o. All rights reserved.'
+      );
+      document.getElementById('footer-copy-btn').textContent = t('Kopiuj dane rejestrowe', 'Copy registry details');
+
+      document.getElementById('footer-nav-links').innerHTML = NAV_ROUTES.map(item => `
+        <li>
+          <a href="#/${item.id}" class="${STATE.route === item.id ? 'text-ink font-medium underline underline-offset-4' : 'text-graphite hover:text-ink'} transition-colors">
+            ${t(item.labelPl, item.labelEn)}
+          </a>
+        </li>
+      `).join('');
+
+      // Cookie Banner
+      document.getElementById('cookie-text').textContent = t(
+        'Ta strona korzysta z ciasteczek aby świadczyć usługi na najwyższym poziomie. Dalsze korzystanie ze strony oznacza, że zgadzasz się na ich użycie.',
+        'This website uses cookies to provide services at the highest level. By continuing to use the site, you agree to their use.'
+      );
+      document.getElementById('cookie-btn').textContent = t('Zgoda', 'Accept');
+    }
+
+    function toggleMobileDrawer() {
+      const drawer = document.getElementById('mobile-drawer');
+      const openIcon = document.getElementById('icon-menu-open');
+      const closeIcon = document.getElementById('icon-menu-close');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        openIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        closeMobileDrawer();
+      }
+    }
+
+    function closeMobileDrawer() {
+      document.getElementById('mobile-drawer').classList.add('hidden');
+      document.getElementById('icon-menu-open').classList.remove('hidden');
+      document.getElementById('icon-menu-close').classList.add('hidden');
+    }
+
+    function copyText(text, labelPl, labelEn) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showNotice(t(labelPl, labelEn));
+      } catch (e) {
+        showNotice(t('Skopiowano do schowka', 'Copied to clipboard'));
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyCompanyDetails() {
+      const details = `OPTILUM Spółka z ograniczoną odpowiedzialnością\nul. Rewerenda 17A, 80-209 Chwaszczyno\nNIP: 584-275-96-62 (5842759662) | KRS: 0001034224\nSąd Rejonowy Gdańsk-Północ w Gdańsku, VIII Wydział Gospodarczy\nKapitał zakładowy: 30.000 zł\nTel.: +48 666 899 244 | E-mail: biuro@optilum.pl`;
+      copyText(
+        details,
+        'Skopiowano pełne dane rejestrowe OPTILUM Sp. z o.o.',
+        'Copied OPTILUM Sp. z o.o. legal registry details'
+      );
+    }
+
+    function showNotice(msg) {
+      const el = document.getElementById('toast-notice');
+      const txt = document.getElementById('toast-notice-text');
+      txt.textContent = msg;
+      el.classList.remove('hidden');
+      clearTimeout(window.__noticeTimer);
+      window.__noticeTimer = setTimeout(() => {
+        el.classList.add('hidden');
+      }, 2800);
+    }
+
+    function dismissCookieBar() {
+      document.getElementById('cookie-bar').classList.add('hidden');
+      try {
+        localStorage.setItem('optilum_cookie_ok', '1');
+      } catch (e) {}
+    }
+
+    function handleImageFallback(img, title) {
+      img.onerror = null;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+        <rect width="1200" height="800" fill="#ECEAE2"/>
+        <line x1="0" y1="400" x2="1200" y2="400" stroke="#DCDAD2" stroke-width="1"/>
+        <line x1="600" y1="0" x2="600" y2="800" stroke="#DCDAD2" stroke-width="1"/>
+        <text x="600" y="395" fill="#111111" font-family="sans-serif" font-size="18" letter-spacing="4" text-anchor="middle">OPTILUM</text>
+        <text x="600" y="425" fill="#5A5955" font-family="serif" font-style="italic" font-size="22" text-anchor="middle">${title || ''}</text>
+      </svg>`;
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    // =========================================================================
+    // SUBPAGE 1: STRONA GŁÓWNA (#/home)
+    // =========================================================================
+    function renderHomeSubpage() {
+      // 4 Featured sectors as specified: Przemysł (0), Wnętrza (2), Salony samochodowe (7), Oświetlenie parkowe (6)
+      const featured = [REALIZATIONS[0], REALIZATIONS[2], REALIZATIONS[7], REALIZATIONS[6]];
+
+      return `
+        <div class="view-transition">
+          
+          <!-- EDITORIAL HERO SECTION -->
+          <section class="border-b border-hairline">
+            <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-14 pb-16 lg:pt-24 lg:pb-24">
+              
+              <!-- Asymmetric Editorial Header (8 cols headline / 4 cols lead) -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end pb-14 lg:pb-20">
+                <div class="lg:col-span-8">
+                  <div class="text-xs tracking-[0.2em] uppercase text-muted-arch mb-5">
+                    01 &nbsp;/&nbsp; ${t('ARCHITEKTURA ŚWIATŁA · CHWASZCZYNO', 'ARCHITECTURE OF LIGHT · CHWASZCZYNO')}
+                  </div>
+                  <h1 class="heading-editorial font-light text-5xl sm:text-6xl lg:text-[5.25rem] text-ink">
+                    ${t(
+                      'Oświetlenie jest naszą <span class="serif-accent italic font-normal">pasją</span>.',
+                      'Lighting is our <span class="serif-accent italic font-normal">passion</span>.'
+                    )}
+                  </h1>
+                </div>
+
+                <div class="lg:col-span-4 space-y-6">
+                  <p class="text-base sm:text-[17px] text-graphite leading-relaxed">
+                    ${t(
+                      'Zajmujemy się kompleksową realizacją projektów oświetleniowych — od koncepcji i obliczeń fotometrycznych, przez optymalizację oferty, aż po dostawy z własnego magazynu.',
+                      'We deliver comprehensive lighting projects — from initial concept and photometric calculations, through commercial offer optimization, to direct supply from our own warehouse.'
+                    )}
+                  </p>
+                  <div class="flex flex-wrap items-center gap-6 pt-2">
+                    <a 
+                      href="#/realizacje" 
+                      class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#111111] dark:bg-[#F2F0EA] text-[#F6F5F0] dark:text-[#111111] text-xs font-medium tracking-[0.16em] uppercase hover:opacity-85 transition-opacity"
+                    >
+                      <span>${t('Realizacje', 'View Projects')}</span>
+                      <span>→</span>
+                    </a>
+                    <a 
+                      href="#/pracownicy" 
+                      class="text-xs font-medium tracking-[0.16em] uppercase text-ink underline underline-offset-8 hover:text-terracotta transition-colors py-2"
+                    >
+                      ${t('Zespół (9 specjalistów)', 'Our Team (9 Specialists)')}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Full-Width Architectural Lighting Photograph -->
+              <div class="border border-hairline bg-surface">
+                <div class="arch-photo-wrap h-[360px] sm:h-[480px] lg:h-[580px] w-full">
+                  <img 
+                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85" 
+                    alt="OPTILUM — Architektoniczne systemy oświetleniowe" 
+                    class="w-full h-full object-cover"
+                    onerror="handleImageFallback(this, 'OPTILUM')"
+                  />
+                </div>
+                <div class="px-5 py-3.5 border-t border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] tracking-[0.16em] uppercase text-muted-arch">
+                  <span>${t('OPTILUM SP. Z O.O. — KOMPLEKSOWE SYSTEMY OŚWIETLENIOWE', 'OPTILUM SP. Z O.O. — COMPREHENSIVE LIGHTING SYSTEMS')}</span>
+                  <span>UL. REWERENDA 17A, 80-209 CHWASZCZYNO</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SECTION: CO ROBIMY (SWISS 3-COLUMN HAIRLINE GRID) -->
+          <section class="border-b border-hairline bg-surface">
+            <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+              
+              <!-- Asymmetric Section Intro -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 py-14 lg:py-20 border-b border-hairline gap-8">
+                <div class="lg:col-span-4">
+                  <span class="text-xs tracking-[0.2em] uppercase text-muted-arch">
+                    02 &nbsp;/&nbsp; ${t('CO ROBIMY', 'WHAT WE DO')}
+                  </span>
+                </div>
+                <div class="lg:col-span-8">
+                  <h2 class="heading-editorial font-normal text-3xl sm:text-4xl lg:text-[2.75rem] text-ink">
+                    ${t(
+                      'Zajmujemy się kompleksową realizacją projektów oświetleniowych.',
+                      'Comprehensive realization of architectural and technical lighting projects.'
+                    )}
+                  </h2>
+                </div>
+              </div>
+
+              <!-- 3-Column Swiss Hairline Grid -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-[var(--border-hairline)]">
+                
+                <!-- 01 / Projektowanie -->
+                <div class="py-12 lg:py-16 lg:pr-12 flex flex-col justify-between space-y-10">
+                  <div class="space-y-6">
+                    <div class="flex items-center justify-between text-xs tracking-[0.18em] uppercase text-muted-arch">
+                      <span>01 / ${t('PROJEKTOWANIE', 'DESIGN')}</span>
+                      <span class="text-terracotta">●</span>
+                    </div>
+                    <h3 class="text-2xl font-medium text-ink tracking-tight">
+                      ${t('Projektowanie', 'Lighting Design')}
+                    </h3>
+                    <p class="text-base text-ink leading-relaxed font-normal">
+                      ${t(
+                        'Doświadczeni projektanci pomogą dobrać, obliczyć i przedstawić kompletny projekt oświetlenia.',
+                        'Experienced lighting designers help select, calculate, and present a complete lighting design.'
+                      )}
+                    </p>
+                    <p class="text-sm text-graphite leading-relaxed">
+                      ${t(
+                        'Opracowujemy wielowariantowe koncepcje oraz precyzyjne obliczenia natężenia i równomierności oświetlenia dla hal przemysłowych, magazynów, przestrzeni biurowych, dróg oraz iluminacji obiektów.',
+                        'We prepare multi-variant concepts and precise illuminance and uniformity calculations for industrial halls, warehouses, commercial interiors, roadways, and architectural illuminations.'
+                      )}
+                    </p>
+                  </div>
+                  <div class="pt-6 border-t border-hairline">
+                    <a href="#/pracownicy" onclick="STATE.teamFilter='design'" class="text-xs tracking-[0.16em] uppercase text-ink hover:text-terracotta transition-colors inline-flex items-center gap-2">
+                      <span>${t('Dział projektowy (2 projektantów)', 'Design Department (2 specialists)')}</span>
+                      <span>→</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- 02 / Doradztwo -->
+                <div class="py-12 lg:py-16 lg:px-12 flex flex-col justify-between space-y-10">
+                  <div class="space-y-6">
+                    <div class="flex items-center justify-between text-xs tracking-[0.18em] uppercase text-muted-arch">
+                      <span>02 / ${t('DORADZTWO', 'ADVISORY')}</span>
+                      <span class="text-terracotta">●</span>
+                    </div>
+                    <h3 class="text-2xl font-medium text-ink tracking-tight">
+                      ${t('Doradztwo', 'Technical Advisory')}
+                    </h3>
+                    <p class="text-base text-ink leading-relaxed font-normal">
+                      ${t(
+                        'Nasi doradcy pomogą zoptymalizować ofertę handlową i zapewnią wsparcie techniczne, aż do całkowitej realizacji inwestycji.',
+                        'Our advisors help optimize the commercial offer and provide technical support right through to final project completion.'
+                      )}
+                    </p>
+                    <p class="text-sm text-graphite leading-relaxed">
+                      ${t(
+                        'Weryfikujemy dokumentację wykonawczą, dobieramy równoważne rozwiązania techniczne dopasowane do budżetu inwestora oraz wspieramy wykonawców na każdym etapie prowadzenia prac na budowie.',
+                        'We verify executive documentation, specify value-engineered technical equivalents tailored to investor budgets, and support electrical contractors throughout on-site installation.'
+                      )}
+                    </p>
+                  </div>
+                  <div class="pt-6 border-t border-hairline">
+                    <a href="#/pracownicy" onclick="STATE.teamFilter='sales'" class="text-xs tracking-[0.16em] uppercase text-ink hover:text-terracotta transition-colors inline-flex items-center gap-2">
+                      <span>${t('Dział handlowy (5 doradców)', 'Sales Department (5 advisors)')}</span>
+                      <span>→</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- 03 / Magazyn -->
+                <div class="py-12 lg:py-16 lg:pl-12 flex flex-col justify-between space-y-10">
+                  <div class="space-y-6">
+                    <div class="flex items-center justify-between text-xs tracking-[0.18em] uppercase text-muted-arch">
+                      <span>03 / ${t('MAGAZYN', 'WAREHOUSE')}</span>
+                      <span class="text-terracotta">●</span>
+                    </div>
+                    <h3 class="text-2xl font-medium text-ink tracking-tight">
+                      ${t('Magazyn', 'Warehouse & Logistics')}
+                    </h3>
+                    <p class="text-base text-ink leading-relaxed font-normal">
+                      ${t(
+                        'Duża dostępność opraw oświetleniowych na magazynie pozwala skrócić czas realizacji.',
+                        'High availability of lighting luminaires in our warehouse significantly shortens project lead times.'
+                      )}
+                    </p>
+                    <p class="text-sm text-graphite leading-relaxed">
+                      ${t(
+                        'Własne zaplecze logistyczno-magazynowe w Chwaszczynie przy ul. Rewerenda 17A gwarantuje ciągłość dostaw, możliwość szybkiego odbioru osobistego oraz terminową kompletację partii inwestycyjnych.',
+                        'Our dedicated warehouse facility at ul. Rewerenda 17A in Chwaszczyno guarantees supply continuity, rapid local pickup, and scheduled dispatch of investment batches.'
+                      )}
+                    </p>
+                  </div>
+                  <div class="pt-6 border-t border-hairline">
+                    <a href="#/kontakt" class="text-xs tracking-[0.16em] uppercase text-ink hover:text-terracotta transition-colors inline-flex items-center gap-2">
+                      <span>${t('Lokalizacja magazynu — Chwaszczyno', 'Warehouse Location — Chwaszczyno')}</span>
+                      <span>→</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION: FEATURED REALIZATIONS PREVIEW (4 SECTORS) -->
+          <section class="border-b border-hairline bg-paper">
+            <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-24">
+              
+              <!-- Editorial Section Header -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-12 lg:pb-16 border-b border-hairline">
+                <div class="lg:col-span-4">
+                  <span class="text-xs tracking-[0.2em] uppercase text-muted-arch">
+                    03 &nbsp;/&nbsp; ${t('WYBRANE REALIZACJE', 'SELECTED PROJECTS')}
+                  </span>
+                </div>
+                <div class="lg:col-span-8 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                  <h2 class="heading-editorial font-normal text-3xl sm:text-4xl lg:text-[2.75rem] text-ink">
+                    ${t(
+                      'Zrealizowane inwestycje w <span class="serif-accent italic">dziewięciu</span> sektorach.',
+                      'Completed lighting installations across <span class="serif-accent italic">nine</span> sectors.'
+                    )}
+                  </h2>
+                  <a 
+                    href="#/realizacje" 
+                    class="shrink-0 text-xs font-medium tracking-[0.16em] uppercase text-ink underline underline-offset-8 hover:text-terracotta transition-colors"
+                  >
+                    ${t('Zobacz wszystkie realizacje (9) →', 'View all realizations (9) →')}
+                  </a>
+                </div>
+              </div>
+
+              <!-- 4 Sharp Architectural Photography Cards (2x2 Swiss Grid) -->
+              <div class="grid grid-cols-1 md:grid-cols-2 border-x border-b border-hairline bg-surface divide-y md:divide-y-0 divide-[var(--border-hairline)]">
+                ${featured.map((item, i) => `
+                  <article 
+                    onclick="openProjectModal('${item.id}')"
+                    class="group cursor-pointer flex flex-col justify-between ${i % 2 === 0 ? 'md:border-r border-hairline' : ''} ${i < 2 ? 'md:border-b border-hairline' : ''}"
+                  >
+                    <div>
+                      <div class="arch-photo-wrap h-72 sm:h-80 lg:h-96 border-b border-hairline">
+                        <img 
+                          src="${item.image}" 
+                          alt="${t(item.categoryPl, item.categoryEn)} — ${t(item.titlePl, item.titleEn)}" 
+                          class="w-full h-full object-cover arch-photo"
+                          onerror="handleImageFallback(this, '${item.categoryPl}')"
+                        />
+                      </div>
+                      <div class="p-6 sm:p-8 space-y-3">
+                        <div class="flex items-center justify-between text-xs tracking-[0.18em] uppercase text-muted-arch">
+                          <span>${item.index} &nbsp;/&nbsp; ${t(item.categoryPl, item.categoryEn)}</span>
+                          <span>${t(item.locationPl, item.locationEn)}</span>
+                        </div>
+                        <h3 class="text-2xl font-medium text-ink tracking-tight group-hover:text-terracotta transition-colors">
+                          ${t(item.titlePl, item.titleEn)}
+                        </h3>
+                        <p class="text-sm text-graphite leading-relaxed pt-1">
+                          ${t(item.descPl, item.descEn)}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="px-6 sm:px-8 py-4 border-t border-hairline flex items-center justify-between text-xs tracking-[0.16em] uppercase text-ink">
+                      <span>${t('Informacje o realizacji', 'Project Details')}</span>
+                      <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </article>
+                `).join('')}
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SECTION: DIRECT CONTACT & TEAM TEASER BANNER -->
+          <section class="bg-stone">
+            <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-24">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-4">
+                  <span class="text-xs tracking-[0.2em] uppercase text-muted-arch">
+                    04 &nbsp;/&nbsp; ${t('ZAPRASZAMY DO WSPÓŁPRACY', 'COLLABORATION')}
+                  </span>
+                </div>
+                <div class="lg:col-span-8 space-y-8">
+                  <h2 class="heading-editorial font-light text-3xl sm:text-4xl lg:text-5xl text-ink">
+                    ${t(
+                      'Skontaktuj się bezpośrednio z naszym <span class="serif-accent italic">zespołem</span> projektowym i handlowym w Chwaszczynie.',
+                      'Connect directly with our lighting <span class="serif-accent italic">design</span> and commercial team in Chwaszczyno.'
+                    )}
+                  </h2>
+                  <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a 
+                      href="#/pracownicy" 
+                      class="px-7 py-4 bg-[#111111] dark:bg-[#F2F0EA] text-[#F6F5F0] dark:text-[#111111] text-xs font-medium tracking-[0.16em] uppercase hover:opacity-85 transition-opacity"
+                    >
+                      ${t('Lista pracowników (9 osób) →', 'Team Directory (9 Specialists) →')}
+                    </a>
+                    <a 
+                      href="#/kontakt" 
+                      class="px-7 py-4 bg-surface border border-hairline text-ink text-xs font-medium tracking-[0.16em] uppercase hover:border-ink transition-colors"
+                    >
+                      ${t('Dane kontaktowe i mapa', 'Contact & Location Map')}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // SUBPAGE 2: REALIZACJE (#/realizacje) — ALL 9 REAL SECTORS
+    // =========================================================================
+    function renderRealizacjeSubpage() {
+      const filtered = REALIZATIONS.filter(item => {
+        if (STATE.portfolioFilter === 'all') return true;
+        return item.group === STATE.portfolioFilter;
+      });
+
+      const categories = [
+        { id: 'all', labelPl: 'Wszystkie (9)', labelEn: 'All (9)' },
+        { id: 'industrial', labelPl: 'Przemysł i hale (3)', labelEn: 'Industry & Halls (3)' },
+        { id: 'commercial', labelPl: 'Wnętrza i komercja (2)', labelEn: 'Interiors & Commercial (2)' },
+        { id: 'outdoor', labelPl: 'Zewnętrzne i drogowe (3)', labelEn: 'Outdoor & Roadway (3)' },
+        { id: 'medical', labelPl: 'Medyczne (1)', labelEn: 'Medical (1)' }
+      ];
+
+      return `
+        <div class="view-transition">
+          <section class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-14 pb-24">
+            
+            <!-- Editorial Subpage Header -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-hairline items-end">
+              <div class="lg:col-span-4">
+                <div class="text-xs tracking-[0.2em] uppercase text-muted-arch mb-2">
+                  OPTILUM.PL / REALIZACJE
+                </div>
+                <h1 class="heading-editorial font-light text-4xl sm:text-5xl lg:text-6xl text-ink">
+                  ${t(
+                    'Zakończone <span class="serif-accent italic">realizacje</span>',
+                    'Completed <span class="serif-accent italic">projects</span>'
+                  )}
+                </h1>
+              </div>
+              <div class="lg:col-span-8">
+                <p class="text-base sm:text-lg text-graphite leading-relaxed max-w-2xl">
+                  ${t(
+                    'Kompleksowe wdrożenia oświetleniowe zrealizowane przez zespół OPTILUM Sp. z o.o. w dziewięciu obszarach specjalizacji — od terminali przeładunkowych i zakładów produkcyjnych po architekturę wnętrz i obiekty medyczne.',
+                    'Comprehensive lighting implementations completed by OPTILUM Sp. z o.o. across nine specialized sectors — from maritime container terminals and manufacturing plants to hospitality interiors and healthcare facilities.'
+                  )}
+                </p>
+              </div>
+            </div>
+
+            <!-- Horizontal Category Filter Bar (Underlined Text Tabs, No Pills) -->
+            <div class="pt-8 pb-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-b border-hairline text-xs tracking-[0.15em] uppercase">
+              ${categories.map(cat => `
+                <button 
+                  type="button" 
+                  onclick="setPortfolioCategory('${cat.id}')"
+                  class="filter-tab ${STATE.portfolioFilter === cat.id ? 'active' : ''}"
+                >
+                  ${t(cat.labelPl, cat.labelEn)}
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- 3-Column Architectural Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-l border-t border-hairline mt-12">
+              ${filtered.map(item => `
+                <article 
+                  onclick="openProjectModal('${item.id}')"
+                  class="group cursor-pointer bg-surface border-r border-b border-hairline flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="arch-photo-wrap h-64 sm:h-72 border-b border-hairline">
+                      <img 
+                        src="${item.image}" 
+                        alt="${t(item.categoryPl, item.categoryEn)} — ${t(item.titlePl, item.titleEn)}" 
+                        class="w-full h-full object-cover arch-photo"
+                        onerror="handleImageFallback(this, '${item.categoryPl}')"
+                      />
+                    </div>
+                    <div class="p-7 space-y-3">
+                      <div class="flex items-center justify-between text-[11px] tracking-[0.18em] uppercase text-muted-arch">
+                        <span>${item.index} &nbsp;/&nbsp; ${t(item.categoryPl, item.categoryEn)}</span>
+                      </div>
+                      <h2 class="text-2xl font-medium text-ink tracking-tight group-hover:text-terracotta transition-colors">
+                        ${t(item.titlePl, item.titleEn)}
+                      </h2>
+                      <p class="text-sm text-graphite leading-relaxed pt-1">
+                        ${t(item.descPl, item.descEn)}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="px-7 py-4 border-t border-hairline flex items-center justify-between text-[11px] tracking-[0.16em] uppercase text-muted-arch group-hover:text-ink transition-colors">
+                    <span>${t(item.locationPl, item.locationEn)}</span>
+                    <span>→</span>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+
+          </section>
+        </div>
+      `;
+    }
+
+    function setPortfolioCategory(catId) {
+      STATE.portfolioFilter = catId;
+      renderActiveRoute();
+    }
+
+    function openProjectModal(projectId) {
+      const item = REALIZATIONS.find(r => r.id === projectId);
+      if (!item) return;
+
+      const backdrop = document.getElementById('modal-backdrop');
+      const box = document.getElementById('modal-box');
+
+      box.innerHTML = `
+        <div>
+          <!-- Top Bar -->
+          <div class="px-6 sm:px-8 py-4 border-b border-hairline flex items-center justify-between text-xs tracking-[0.18em] uppercase text-muted-arch">
+            <span>${item.index} &nbsp;/&nbsp; ${t(item.categoryPl, item.categoryEn)}</span>
+            <button type="button" onclick="closeModal()" class="text-ink hover:text-terracotta transition-colors py-1 px-2">
+              ${t('ZAMKNIJ [✕]', 'CLOSE [✕]')}
+            </button>
+          </div>
+
+          <!-- High-Res Photograph -->
+          <div class="h-72 sm:h-96 bg-stone border-b border-hairline overflow-hidden">
+            <img 
+              src="${item.image}" 
+              alt="${t(item.titlePl, item.titleEn)}" 
+              class="w-full h-full object-cover"
+              onerror="handleImageFallback(this, '${item.categoryPl}')"
+            />
+          </div>
+
+          <!-- Editorial Details -->
+          <div class="p-6 sm:p-10 space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+              <div class="md:col-span-5 space-y-2">
+                <div class="text-xs tracking-[0.16em] uppercase text-muted-arch">
+                  ${t(item.locationPl, item.locationEn)}
+                </div>
+                <h2 class="heading-editorial font-normal text-3xl sm:text-4xl text-ink">
+                  ${t(item.titlePl, item.titleEn)}
+                </h2>
+                <div class="pt-2 text-xs text-terracotta tracking-wider uppercase">
+                  ${t(item.categoryPl, item.categoryEn)}
+                </div>
+              </div>
+              <div class="md:col-span-7 space-y-4 text-sm sm:text-base text-graphite leading-relaxed">
+                <p class="text-ink font-medium">${t(item.descPl, item.descEn)}</p>
+                <p>${t(item.detailsPl, item.detailsEn)}</p>
+                <div class="pt-4 border-t border-hairline text-xs text-muted-arch">
+                  <strong class="text-ink uppercase tracking-wider">${t('Zakres prac:', 'Project Scope:')}</strong> ${t(item.scopePl, item.scopeEn)}
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-hairline flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <span class="text-xs text-muted-arch">OPTILUM Sp. z o.o. · ul. Rewerenda 17A, 80-209 Chwaszczyno</span>
+              <button 
+                type="button" 
+                onclick="inquireProject('${item.id}')"
+                class="px-6 py-3 bg-[#111111] dark:bg-[#F2F0EA] text-[#F6F5F0] dark:text-[#111111] text-xs font-medium tracking-[0.16em] uppercase hover:opacity-85 transition-opacity"
+              >
+                ${t('Zapytaj o podobną inwestycję →', 'Inquire about a similar project →')}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      backdrop.classList.remove('hidden');
+    }
+
+    function inquireProject(projectId) {
+      const item = REALIZATIONS.find(r => r.id === projectId);
+      closeModal();
+      if (!item) return;
+      STATE.contactDepartment = 'Dział handlowy';
+      STATE.contactRecipient = '';
+      STATE.contactSubject = t(
+        `Zapytanie dotyczące realizacji: ${item.categoryPl} (${item.titlePl})`,
+        `Project inquiry: ${item.categoryEn} (${item.titleEn})`
+      );
+      window.location.hash = '#/kontakt';
+    }
+
+    // =========================================================================
+    // SUBPAGE 3: PRACOWNICY (#/pracownicy) — SWISS DIRECTORY (NO AVATARS)
+    // =========================================================================
+    function renderPracownicySubpage() {
+      const departments = [
+        { key: 'all', labelPl: 'Wszyscy (9)', labelEn: 'All (9)' },
+        { key: 'sales', labelPl: 'Dział handlowy (5)', labelEn: 'Sales Department (5)' },
+        { key: 'design', labelPl: 'Dział projektowy (2)', labelEn: 'Design Department (2)' },
+        { key: 'warehouse', labelPl: 'Magazyn (1)', labelEn: 'Warehouse (1)' },
+        { key: 'admin', labelPl: 'Administracja (1)', labelEn: 'Administration (1)' }
+      ];
+
+      const deptGroups = [
+        { key: 'sales', titlePl: 'Dział handlowy', titleEn: 'Sales Department', descPl: 'Optymalizacja ofert handlowych, dobór opraw i wsparcie techniczne inwestycji.', descEn: 'Commercial offer optimization, luminaire selection, and technical project support.' },
+        { key: 'design', titlePl: 'Dział projektowy', titleEn: 'Design Department', descPl: 'Dobór opraw, obliczenia fotometryczne i kompletne projekty oświetlenia.', descEn: 'Luminaire selection, photometric calculations, and complete lighting designs.' },
+        { key: 'warehouse', titlePl: 'Magazyn', titleEn: 'Warehouse', descPl: 'Logistyka, dostępność opraw oświetleniowych i wydania magazynowe w Chwaszczynie.', descEn: 'Logistics, stock availability, and warehouse dispatch in Chwaszczyno.' },
+        { key: 'admin', titlePl: 'Administracja', titleEn: 'Administration', descPl: 'Obsługa administracyjna biura, dokumentacja handlowa i rozliczenia.', descEn: 'Office administration, commercial documentation, and billing.' }
+      ];
+
+      const visibleGroups = STATE.teamFilter === 'all'
+        ? deptGroups
+        : deptGroups.filter(g => g.key === STATE.teamFilter);
+
+      return `
+        <div class="view-transition">
+          <section class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-14 pb-24">
+            
+            <!-- Editorial Subpage Header -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-hairline items-end">
+              <div class="lg:col-span-4">
+                <div class="text-xs tracking-[0.2em] uppercase text-muted-arch mb-2">
+                  OPTILUM.PL / PRACOWNICY
+                </div>
+                <h1 class="heading-editorial font-light text-4xl sm:text-5xl lg:text-6xl text-ink">
+                  ${t(
+                    'Zespół <span class="serif-accent italic">OPTILUM</span>',
+                    '<span class="serif-accent italic">OPTILUM</span> Team'
+                  )}
+                </h1>
+              </div>
+              <div class="lg:col-span-8 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                <p class="text-base sm:text-lg text-graphite leading-relaxed max-w-2xl">
+                  ${t(
+                    'Bezpośrednie kontakty do doradców techniczno-handlowych, projektantów oświetlenia, magazynu oraz administracji biura w Chwaszczynie.',
+                    'Direct contact directory for our technical sales advisors, lighting designers, warehouse coordinator, and office administration in Chwaszczyno.'
+                  )}
+                </p>
+                <div class="shrink-0 text-xs text-graphite border-l border-hairline pl-4">
+                  <div class="uppercase tracking-widest text-muted-arch">${t('Sekretariat', 'General Line')}</div>
+                  <a href="tel:+48666899244" class="text-ink font-medium hover:text-terracotta">+48 666 899 244</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Department Filter Tabs -->
+            <div class="pt-8 pb-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-b border-hairline text-xs tracking-[0.15em] uppercase">
+              ${departments.map(d => `
+                <button 
+                  type="button" 
+                  onclick="setTeamDepartment('${d.key}')"
+                  class="filter-tab ${STATE.teamFilter === d.key ? 'active' : ''}"
+                >
+                  ${t(d.labelPl, d.labelEn)}
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Swiss Editorial Practice Directory (Grouped by Department, Crisp Hairline Rows) -->
+            <div class="divide-y divide-[var(--border-hairline)]">
+              ${visibleGroups.map(group => {
+                const members = EMPLOYEES.filter(e => e.deptKey === group.key);
+                return `
+                  <div class="py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                    
+                    <!-- Left Column: Department Title & Description (4 cols) -->
+                    <div class="lg:col-span-4 space-y-2">
+                      <div class="text-xs tracking-[0.18em] uppercase text-terracotta">
+                        ${members.length} ${members.length === 1 ? t('OSOBY / KONTAKT', 'SPECIALIST') : t('SPECJALISTÓW', 'SPECIALISTS')}
+                      </div>
+                      <h2 class="text-2xl sm:text-3xl font-normal text-ink tracking-tight">
+                        ${t(group.titlePl, group.titleEn)}
+                      </h2>
+                      <p class="text-sm text-graphite leading-relaxed pt-1 max-w-sm">
+                        ${t(group.descPl, group.descEn)}
+                      </p>
+                    </div>
+
+                    <!-- Right Column: Crisp Directory Rows (8 cols) -->
+                    <div class="lg:col-span-8 border-t border-hairline divide-y divide-[var(--border-hairline)]">
+                      ${members.map(emp => `
+                        <div class="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group">
+                          
+                          <!-- Name & Role -->
+                          <div class="space-y-1">
+                            <div class="flex items-baseline gap-3">
+                              <span class="text-xs text-muted-arch">${emp.index}</span>
+                              <h3 class="text-xl font-medium text-ink tracking-tight">
+                                ${emp.name}
+                              </h3>
+                            </div>
+                            <p class="text-xs text-graphite pl-6">
+                              ${t(emp.rolePl, emp.roleEn)}
+                            </p>
+                          </div>
+
+                          <!-- Direct Phone, Email & Subtle Copy Actions -->
+                          <div class="pl-6 sm:pl-0 flex flex-col sm:items-end space-y-1.5 text-sm">
+                            <div class="flex items-center gap-3">
+                              <a 
+                                href="tel:${emp.phoneHref}" 
+                                class="text-ink font-medium hover:text-terracotta transition-colors"
+                              >
+                                +48 ${emp.phone}
+                              </a>
+                              <button 
+                                type="button"
+                                onclick="copyText('+48 ${emp.phone}', 'Skopiowano numer: ${emp.phone}', 'Copied phone: ${emp.phone}')"
+                                class="text-[11px] uppercase tracking-wider text-muted-arch hover:text-ink underline underline-offset-4"
+                              >
+                                ${t('Kopiuj tel.', 'Copy tel')}
+                              </button>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                              <a 
+                                href="mailto:${emp.email}" 
+                                class="text-graphite hover:text-ink underline underline-offset-4 transition-colors"
+                              >
+                                ${emp.email}
+                              </a>
+                              <button 
+                                type="button"
+                                onclick="copyText('${emp.email}', 'Skopiowano e-mail: ${emp.email}', 'Copied email: ${emp.email}')"
+                                class="text-[11px] uppercase tracking-wider text-muted-arch hover:text-ink underline underline-offset-4"
+                              >
+                                ${t('Kopiuj e-mail', 'Copy email')}
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      `).join('')}
+                    </div>
+
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+          </section>
+        </div>
+      `;
+    }
+
+    function setTeamDepartment(deptKey) {
+      STATE.teamFilter = deptKey;
+      renderActiveRoute();
+    }
+
+    // =========================================================================
+    // SUBPAGE 4: AKTUALNOŚCI (#/aktualnosci) — EDITORIAL JOURNAL
+    // =========================================================================
+    function renderAktualnosciSubpage() {
+      return `
+        <div class="view-transition">
+          <section class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-14 pb-24">
+            
+            <!-- Editorial Header -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-hairline items-end">
+              <div class="lg:col-span-4">
+                <div class="text-xs tracking-[0.2em] uppercase text-muted-arch mb-2">
+                  OPTILUM.PL / AKTUALNOŚCI
+                </div>
+                <h1 class="heading-editorial font-light text-4xl sm:text-5xl lg:text-6xl text-ink">
+                  ${t(
+                    '<span class="serif-accent italic">Aktualności</span>',
+                    'Company <span class="serif-accent italic">Journal</span>'
+                  )}
+                </h1>
+              </div>
+              <div class="lg:col-span-8">
+                <p class="text-base sm:text-lg text-graphite leading-relaxed max-w-2xl">
+                  ${t(
+                    'Informacje z życia spółki OPTILUM Sp. z o.o., komunikaty organizacyjne dotyczące funkcjonowania biura i magazynu w Chwaszczynie oraz działania społeczne.',
+                    'Corporate announcements from OPTILUM Sp. z o.o., organizational updates regarding our office and warehouse in Chwaszczyno, and social responsibility initiatives.'
+                  )}
+                </p>
+              </div>
+            </div>
+
+            <!-- Journal Entries (Asymmetric 4 / 8 Architectural Layout) -->
+            <div class="divide-y divide-[var(--border-hairline)]">
+              ${JOURNAL_ITEMS.map(article => `
+                <article class="py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+                  
+                  <!-- Left Meta Column (4 cols) -->
+                  <div class="lg:col-span-4 space-y-3">
+                    <div class="text-xs tracking-[0.18em] uppercase text-terracotta">
+                      ${article.index} &nbsp;/&nbsp; ${t(article.categoryPl, article.categoryEn)}
+                    </div>
+                    <h2 class="heading-editorial font-normal text-3xl sm:text-4xl text-ink">
+                      ${t(article.titlePl, article.titleEn)}
+                    </h2>
+                    <div class="pt-3 text-xs text-muted-arch uppercase tracking-wider">
+                      OPTILUM Sp. z o.o. · Chwaszczyno
+                    </div>
+                  </div>
+
+                  <!-- Right Editorial Content Column (8 cols) -->
+                  <div class="lg:col-span-8 space-y-8">
+                    <div 
+                      onclick="openJournalModal('${article.id}')"
+                      class="arch-photo-wrap h-72 sm:h-96 border border-hairline cursor-pointer group"
+                    >
+                      <img 
+                        src="${article.image}" 
+                        alt="${t(article.titlePl, article.titleEn)}" 
+                        class="w-full h-full object-cover arch-photo"
+                        onerror="handleImageFallback(this, 'OPTILUM')"
+                      />
+                    </div>
+
+                    <div class="space-y-4">
+                      <p class="text-lg sm:text-xl text-ink font-normal leading-snug">
+                        ${t(article.leadPl, article.leadEn)}
+                      </p>
+                      <div class="space-y-4 text-sm sm:text-base text-graphite leading-relaxed">
+                        ${(STATE.lang === 'pl' ? article.bodyPl : article.bodyEn).map(p => `<p>${p}</p>`).join('')}
+                      </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-hairline flex flex-wrap items-center justify-between gap-4">
+                      <button 
+                        type="button" 
+                        onclick="openJournalModal('${article.id}')"
+                        class="text-xs tracking-[0.16em] uppercase text-ink underline underline-offset-8 hover:text-terracotta transition-colors"
+                      >
+                        ${t('Otwórz w pełnym widoku →', 'Open reader view →')}
+                      </button>
+                      ${article.id === 'zmiana-siedziby-firmy' ? `
+                        <a 
+                          href="#/kontakt" 
+                          class="text-xs tracking-[0.16em] uppercase text-graphite hover:text-ink transition-colors"
+                        >
+                          ${t('Zobacz lokalizację na mapie (ul. Rewerenda 17A) →', 'View warehouse location on map →')}
+                        </a>
+                      ` : ''}
+                    </div>
+                  </div>
+
+                </article>
+              `).join('')}
+            </div>
+
+          </section>
+        </div>
+      `;
+    }
+
+    function openJournalModal(articleId) {
+      const article = JOURNAL_ITEMS.find(a => a.id === articleId);
+      if (!article) return;
+
+      const backdrop = document.getElementById('modal-backdrop');
+      const box = document.getElementById('modal-box');
+
+      box.innerHTML = `
+        <div>
+          <div class="px-6 sm:px-8 py-4 border-b border-hairline flex items-center justify-between text-xs tracking-[0.18em] uppercase text-muted-arch">
+            <span>${article.index} &nbsp;/&nbsp; ${t(article.categoryPl, article.categoryEn)}</span>
+            <button type="button" onclick="closeModal()" class="text-ink hover:text-terracotta transition-colors py-1 px-2">
+              ${t('ZAMKNIJ [✕]', 'CLOSE [✕]')}
+            </button>
+          </div>
+          <div class="h-64 sm:h-80 bg-stone border-b border-hairline overflow-hidden">
+            <img 
+              src="${article.image}" 
+              alt="${t(article.titlePl, article.titleEn)}" 
+              class="w-full h-full object-cover"
+              onerror="handleImageFallback(this, 'OPTILUM')"
+            />
+          </div>
+          <div class="p-6 sm:p-10 space-y-6">
+            <h2 class="heading-editorial font-normal text-3xl sm:text-4xl text-ink">
+              ${t(article.titlePl, article.titleEn)}
+            </h2>
+            <p class="text-base sm:text-lg text-ink font-medium">
+              ${t(article.leadPl, article.leadEn)}
+            </p>
+            <div class="space-y-4 text-sm sm:text-base text-graphite leading-relaxed">
+              ${(STATE.lang === 'pl' ? article.bodyPl : article.bodyEn).map(p => `<p>${p}</p>`).join('')}
+            </div>
+            <div class="pt-6 border-t border-hairline flex items-center justify-between">
+              <span class="text-xs text-muted-arch">OPTILUM Sp. z o.o. · ul. Rewerenda 17A, 80-209 Chwaszczyno</span>
+              <button type="button" onclick="closeModal()" class="px-5 py-2.5 bg-[#111111] dark:bg-[#F2F0EA] text-[#F6F5F0] dark:text-[#111111] text-xs uppercase tracking-widest">
+                ${t('Zamknij', 'Close')}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      backdrop.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.add('hidden');
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'modal-backdrop') {
+        closeModal();
+      }
+    }
+
+    // =========================================================================
+    // SUBPAGE 5: KONTAKT (#/kontakt) — ARCHITECTURAL 2-COLUMN GRID & MAP
+    // =========================================================================
+    function renderKontaktSubpage() {
+      return `
+        <div class="view-transition">
+          <section class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-14 pb-24">
+            
+            <!-- Editorial Subpage Header -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-hairline items-end">
+              <div class="lg:col-span-4">
+                <div class="text-xs tracking-[0.2em] uppercase text-muted-arch mb-2">
+                  OPTILUM.PL / KONTAKT
+                </div>
+                <h1 class="heading-editorial font-light text-4xl sm:text-5xl lg:text-6xl text-ink">
+                  ${t(
+                    '<span class="serif-accent italic">Kontakt</span> i siedziba',
+                    '<span class="serif-accent italic">Contact</span> & Office'
+                  )}
+                </h1>
+              </div>
+              <div class="lg:col-span-8">
+                <p class="text-base sm:text-lg text-graphite leading-relaxed max-w-2xl">
+                  ${t(
+                    'Biuro handlowo-projektowe oraz magazyn centralny OPTILUM Sp. z o.o. mieszczą się w Chwaszczynie przy ul. Rewerenda 17A.',
+                    'The commercial and lighting design office as well as the central warehouse of OPTILUM Sp. z o.o. are located in Chwaszczyno at ul. Rewerenda 17A.'
+                  )}
+                </p>
+              </div>
+            </div>
+
+            <!-- Architectural 2-Column Contact Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 border-b border-hairline">
+              
+              <!-- Left Column: Headquarters, Phone/Email & Legal Registry (5 cols) -->
+              <div class="lg:col-span-5 py-12 lg:py-16 lg:pr-12 lg:border-r border-hairline space-y-12">
+                
+                <!-- Block 1: Location & Direct Contact -->
+                <div class="space-y-4">
+                  <div class="text-xs tracking-[0.18em] uppercase text-terracotta">
+                    01 &nbsp;/&nbsp; ${t('LOKALIZACJA — BIURO I MAGAZYN', 'LOCATION — OFFICE & WAREHOUSE')}
+                  </div>
+                  <h2 class="text-2xl font-medium text-ink">
+                    OPTILUM Sp. z o.o.
+                  </h2>
+                  <div class="text-base text-graphite space-y-1">
+                    <p class="text-ink font-medium">ul. Rewerenda 17A</p>
+                    <p>80-209 Chwaszczyno, Polska</p>
+                  </div>
+                  <div class="pt-4 space-y-2 text-sm">
+                    <div class="flex items-center justify-between py-2 border-b border-hairline">
+                      <span class="text-muted-arch uppercase text-xs tracking-wider">${t('Telefon ogólny', 'General Phone')}</span>
+                      <a href="tel:+48666899244" class="text-ink font-medium hover:text-terracotta transition-colors">+48 666 899 244</a>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b border-hairline">
+                      <span class="text-muted-arch uppercase text-xs tracking-wider">E-mail</span>
+                      <a href="mailto:biuro@optilum.pl" class="text-ink font-medium underline underline-offset-4 hover:text-terracotta transition-colors">biuro@optilum.pl</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Block 2: Company Registry Details (KRS / NIP / Capital) -->
+                <div class="space-y-4">
+                  <div class="text-xs tracking-[0.18em] uppercase text-muted-arch">
+                    02 &nbsp;/&nbsp; ${t('DANE REJESTROWE SPÓŁKI', 'COMPANY REGISTRY DATA')}
+                  </div>
+                  <div class="p-6 bg-surface border border-hairline space-y-3 text-sm">
+                    <div class="font-medium text-ink">
+                      OPTILUM Spółka z ograniczoną odpowiedzialnością
+                    </div>
+                    <p class="text-xs text-graphite leading-relaxed">
+                      ${t(
+                        'Sąd Rejonowy Gdańsk-Północ w Gdańsku, VIII Wydział Gospodarczy',
+                        'District Court Gdańsk-Północ in Gdańsk, 8th Commercial Division'
+                      )}
+                    </p>
+                    <div class="pt-3 border-t border-hairline grid grid-cols-2 gap-3 text-xs">
+                      <div>
+                        <span class="text-muted-arch block">NIP</span>
+                        <span class="text-ink font-medium">584-275-96-62</span>
+                      </div>
+                      <div>
+                        <span class="text-muted-arch block">KRS</span>
+                        <span class="text-ink font-medium">0001034224</span>
+                      </div>
+                      <div class="col-span-2">
+                        <span class="text-muted-arch block">${t('Kapitał zakładowy', 'Share Capital')}</span>
+                        <span class="text-ink font-medium">30.000 zł</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center gap-4 pt-1">
+                    <button 
+                      type="button" 
+                      onclick="copyCompanyDetails()"
+                      class="px-5 py-3 bg-surface border border-hairline hover:border-ink text-xs font-medium tracking-[0.15em] uppercase text-ink transition-colors"
+                    >
+                      ${t('Kopiuj dane rejestrowe', 'Copy Registry Details')}
+                    </button>
+                    <a 
+                      href="#/pracownicy" 
+                      class="text-xs tracking-[0.15em] uppercase text-graphite hover:text-ink underline underline-offset-4"
+                    >
+                      ${t('Kontakty do działów (9) →', 'Department Contacts (9) →')}
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Right Column: Minimalist Architectural Inquiry Form (7 cols) -->
+              <div class="lg:col-span-7 py-12 lg:py-16 lg:pl-12 border-t lg:border-t-0 border-hairline">
+                <div class="max-w-2xl space-y-8">
+                  <div class="space-y-2">
+                    <div class="text-xs tracking-[0.18em] uppercase text-muted-arch">
+                      03 &nbsp;/&nbsp; ${t('FORMULARZ KONTAKTOWY', 'INQUIRY FORM')}
+                    </div>
+                    <h2 class="heading-editorial font-normal text-3xl text-ink">
+                      ${t('Wyślij zapytanie projektowe lub handlowe', 'Send a project or commercial inquiry')}
+                    </h2>
+                  </div>
+
+                  <form onsubmit="submitInquiryForm(event)" class="space-y-7">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <label class="block text-[11px] tracking-[0.16em] uppercase text-muted-arch mb-1">
+                          ${t('Imię i nazwisko / Firma *', 'Name / Company *')}
+                        </label>
+                        <input 
+                          type="text" 
+                          required 
+                          placeholder="${t('Jan Kowalski', 'Jan Kowalski')}"
+                          class="arch-input"
+                        />
+                      </div>
+                      <div>
+                        <label class="block text-[11px] tracking-[0.16em] uppercase text-muted-arch mb-1">
+                          ${t('Adres e-mail lub telefon *', 'Email or Phone *')}
+                        </label>
+                        <input 
+                          type="text" 
+                          required 
+                          placeholder="kontakt@firma.pl / +48 600 000 000"
+                          class="arch-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <label class="block text-[11px] tracking-[0.16em] uppercase text-muted-arch mb-1">
+                          ${t('Dział docelowy', 'Target Department')}
+                        </label>
+                        <select class="arch-input">
+                          <option value="Dział handlowy" ${STATE.contactDepartment === 'Dział handlowy' ? 'selected' : ''}>
+                            ${t('Dział handlowy (Oferty i doradztwo)', 'Sales Department (Quotes & Advisory)')}
+                          </option>
+                          <option value="Dział projektowy" ${STATE.contactDepartment === 'Dział projektowy' ? 'selected' : ''}>
+                            ${t('Dział projektowy (Projekty oświetlenia)', 'Design Department (Lighting Design)')}
+                          </option>
+                          <option value="Magazyn" ${STATE.contactDepartment === 'Magazyn' ? 'selected' : ''}>
+                            ${t('Magazyn Chwaszczyno (Dostawy i odbiory)', 'Warehouse Chwaszczyno (Logistics)')}
+                          </option>
+                          <option value="Biuro ogólne" ${STATE.contactDepartment === 'Biuro ogólne' ? 'selected' : ''}>
+                            ${t('Biuro ogólne / Administracja', 'General Office / Administration')}
+                          </option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-[11px] tracking-[0.16em] uppercase text-muted-arch mb-1">
+                          ${t('Temat / Inwestycja', 'Subject / Project')}
+                        </label>
+                        <input 
+                          type="text" 
+                          value="${STATE.contactSubject || ''}"
+                          placeholder="${t('np. Dobór opraw oświetleniowych', 'e.g. Lighting specification inquiry')}"
+                          class="arch-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="block text-[11px] tracking-[0.16em] uppercase text-muted-arch mb-1">
+                        ${t('Treść wiadomości *', 'Message *')}
+                      </label>
+                      <textarea 
+                        rows="4" 
+                        required 
+                        placeholder="${t('Opisz krótko zapytanie, lokalizację inwestycji oraz oczekiwany zakres współpracy...', 'Briefly describe your project, location, and required scope...')}"
+                        class="arch-input resize-y"
+                      ></textarea>
+                    </div>
+
+                    <div id="form-confirm-box" class="hidden p-4 bg-stone border border-hairline text-xs text-ink">
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <span class="text-xs text-muted-arch">
+                        ${t('Bezpośredni adres biura: biuro@optilum.pl', 'Direct office email: biuro@optilum.pl')}
+                      </span>
+                      <button 
+                        type="submit"
+                        class="px-8 py-4 bg-[#111111] dark:bg-[#F2F0EA] text-[#F6F5F0] dark:text-[#111111] text-xs font-medium tracking-[0.18em] uppercase hover:opacity-85 transition-opacity"
+                      >
+                        ${t('Wyślij wiadomość →', 'Send Message →')}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Full-Width Architectural Map Section -->
+            <div class="pt-14">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 text-xs tracking-[0.16em] uppercase text-muted-arch">
+                <span>MAPA DOJAZDU — UL. REWERENDA 17A, 80-209 CHWASZCZYNO</span>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=OPTILUM+Rewerenda+17A+80-209+Chwaszczyno" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-ink underline underline-offset-4 hover:text-terracotta transition-colors"
+                >
+                  ${t('Otwórz w Google Maps ↗', 'Open in Google Maps ↗')}
+                </a>
+              </div>
+              <div class="h-[420px] w-full border border-hairline bg-stone overflow-hidden">
+                <iframe 
+                  title="OPTILUM Sp. z o.o. — ul. Rewerenda 17A, 80-209 Chwaszczyno"
+                  width="100%" 
+                  height="100%" 
+                  frameborder="0" 
+                  scrolling="no" 
+                  marginheight="0" 
+                  marginwidth="0" 
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=18.4050%2C54.4350%2C18.4450%2C54.4550&amp;layer=mapnik&amp;marker=54.4447%2C18.4239"
+                  style="filter: grayscale(0.85) contrast(1.08);"
+                ></iframe>
+              </div>
+            </div>
+
+          </section>
+        </div>
+      `;
+    }
+
+    function submitInquiryForm(e) {
+      e.preventDefault();
+      const confirmBox = document.getElementById('form-confirm-box');
+      if (confirmBox) {
+        confirmBox.classList.remove('hidden');
+        confirmBox.textContent = t(
+          'Dziękujemy za wiadomość. Zapytanie zostało przekazane do wybranego działu OPTILUM Sp. z o.o. (biuro@optilum.pl).',
+          'Thank you for your message. Your inquiry has been forwarded to the selected OPTILUM Sp. z o.o. department (biuro@optilum.pl).'
+        );
+      }
+      showNotice(t('Wysłano wiadomość do OPTILUM', 'Inquiry sent to OPTILUM'));
+    }
+
+    // =========================================================================
+    // HASH ROUTER INITIALIZATION
+    // =========================================================================
+    function syncHashRoute() {
+      const hash = window.location.hash || '#/home';
+      const clean = hash.replace(/^#\/?/, '').split('?')[0].toLowerCase();
+      const allowed = NAV_ROUTES.map(r => r.id);
+      STATE.route = allowed.includes(clean) ? clean : 'home';
+
+      closeModal();
+      closeMobileDrawer();
+      updateGlobalChrome();
+      renderActiveRoute();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderActiveRoute() {
+      const container = document.getElementById('router-view');
+      if (!container) return;
+
+      switch (STATE.route) {
+        case 'home':
+          container.innerHTML = renderHomeSubpage();
+          break;
+        case 'realizacje':
+          container.innerHTML = renderRealizacjeSubpage();
+          break;
+        case 'pracownicy':
+          container.innerHTML = renderPracownicySubpage();
+          break;
+        case 'aktualnosci':
+          container.innerHTML = renderAktualnosciSubpage();
+          break;
+        case 'kontakt':
+          container.innerHTML = renderKontaktSubpage();
+          break;
+        default:
+          container.innerHTML = renderHomeSubpage();
+      }
+    }
+
+    window.addEventListener('hashchange', syncHashRoute);
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (localStorage.getItem('optilum_cookie_ok') === '1') {
+          document.getElementById('cookie-bar').classList.add('hidden');
+        }
+      } catch (e) {}
+      syncHashRoute();
+    });
+  </script>
+</body>
+</html>
